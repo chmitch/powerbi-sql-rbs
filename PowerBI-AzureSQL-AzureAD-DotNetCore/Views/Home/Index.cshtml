@@ -21,13 +21,14 @@
 
     return;
 }
+else
+{
+    <h2>Embedded Report</h2>
 
-<h2>Embedded Report</h2>
-
-<div id="reportContainer" class="wrapper"></div>
+    <div id="reportContainer" class="wrapper"></div>
 
 
-<script>
+    <script>
     $(document).ready(function () {
         // Read embed application token from Model
         var accessToken = "@Model.EmbedToken.Token";
@@ -65,4 +66,6 @@
         // Embed the report and display it within the div container.
         var report = powerbi.embed(reportContainer, config);
     });
-</script>
+    </script>
+}
+

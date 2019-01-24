@@ -123,7 +123,8 @@ namespace PowerBI_AzureSQL_AzureAD_DotNetCore.Controllers
                             {
                                 var result = JObject.Parse(await response.Content.ReadAsStringAsync());
                                 _pbiAccessToken = result.Value<string>("access_token");
-                                _pbiAccessTokenExpiry = DateTime.Now.AddSeconds(result.Value<double>("expires_in") - 600);
+                                //store token expiration to acquire a new one before the current token expires
+                                _pbiAccessTokenExpiry = DateTime.Now.AddSeconds(result.Value<double>("expires_in") - 120);
                             }
                         }
                     }
