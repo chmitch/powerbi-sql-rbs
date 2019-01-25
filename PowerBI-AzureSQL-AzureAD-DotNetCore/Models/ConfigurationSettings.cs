@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PowerBI_AzureSQL_AzureAD_DotNetCore.Models
+﻿namespace PowerBI_AzureSQL_AzureAD_DotNetCore.Models
 {
     public class ConfigurationSettings
     {

@@ -1,5 +1,3 @@
-using System;
-
 namespace PowerBI_AzureSQL_AzureAD_DotNetCore.Models
 {
     public class ErrorViewModel
