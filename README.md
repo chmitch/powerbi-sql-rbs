@@ -6,8 +6,6 @@
 
 This sample shows how to build an end-to-end demonstration of Azure SQL Database row level security using PowerBI Embedded and .Net Core.  Once the steps are complete, you will be able to demonstrate an access control pattern that only allows a PowerBI report to display data that the signed-in user is permitted to see.
 
-TBD - Provide a schematic graphic depicting the concept
-
 ![Overview](./ReadmeFiles/topology.png)
 
 ### Scenario
