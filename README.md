@@ -97,10 +97,8 @@ REVERT;
 
 1. Login to the [Azure portal](https://portal.azure.com) and create a new Power BI Embedded capacity.  [Detailed instructions](https://docs.microsoft.com/en-us/power-bi/developer/azure-pbie-create-capacity#create-a-capacity) _(Note:  Make sure you create this capacity in the same region as the database you created in Step 2, and make sure the user you set as your capacity administrator is the same user you use to login to Power BI.)_
 2. Login to [Power BI](https://app.powerbi.com) as a Power BI Pro user so we can create a workspace to publish our reports.  _(Note: if you don't presently have a pro license you can sign up for a 60 day pro trial)_
-3. Once you've logged into Power BI, create a new app workspace, give the workspace a name and invite any other users that may need to publish reports.
-<img src="./ReadmeFiles/powerbi-appworkspace-part1.png" title="Step 3" width="400">
-4. Under the advanced section, select the Power BI Embedded capacity you provisioned, and click save.
-<img src="./ReadmeFiles/powerbi-appworkspace-part2.png" title="Step 3" width="400">
+3. Once you've logged into Power BI, create a new app workspace, give the workspace a name and invite any other users that may need to publish reports.<br><img src="./ReadmeFiles/powerbi-appworkspace-part1.png" title="Step 3" width="400">
+4. Under the advanced section, select the Power BI Embedded capacity you provisioned, and click save.<br><img src="./ReadmeFiles/powerbi-appworkspace-part2.png" title="Step 3" width="400">
 
 **Create and Publish the Power BI Model**
 
@@ -108,11 +106,9 @@ REVERT;
 2. Get data make sure you use "Direct Connect" and not cached mode.
 3. Create a report that includes data from the table "Sales" which uses role based security.
 4. Publish the report to Power BI in the workspace you just created.
-5. Back in Power BI.com, edit the settings for the published dataset.
-<img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400">
+5. Back in Power BI.com, edit the settings for the published dataset.<br><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400">
 6. Navigate to "Data source credentials" and click "Edit Credentials"
-7. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.
-<img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"> 
+7. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<br><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="300"> 
 
 ### Step 4:  Create Azure AD app registrations
 
