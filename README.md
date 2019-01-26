@@ -1,10 +1,10 @@
-﻿﻿﻿# Integrate Azure SQL row level security with PowerBI Embedded in .Net Core
+# Integrate Azure SQL row level security with Power BI Embedded in .Net Core
 
 ## About this sample
 
 ### Overview
 
-This sample shows how to build an end-to-end demonstration of Azure SQL Database row level security using PowerBI Embedded and .Net Core.  Once the steps are complete, you will be able to demonstrate an access control pattern that only allows a PowerBI report to display data that the signed-in user is permitted to see.
+This sample shows how to build an end-to-end demonstration of Azure SQL Database row level security using Power BI Embedded and .Net Core.  Once the steps are complete, you will be able to demonstrate an access control pattern that only allows a Power BI report to display data that the signed-in user is permitted to see.  For more information on this feature, see [Token-based Identity with Azure SQL Database (Preview)](https://docs.microsoft.com/en-us/power-bi/developer/embedded-row-level-security#token-based-identity-with-azure-sql-database-preview)
 
 ![Overview](./ReadmeFiles/topology.png)
 
@@ -18,7 +18,8 @@ To run this sample, you'll need:
 
 - [Visual Studio 2017](https://aka.ms/vsdownload)
 - An Internet connection
-- An Azure subscription
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
+- A Power BI Pro or [trial](https://powerbi.microsoft.com/en-us/get-started/) license
 - At least two user accounts in your Azure AD tenant for testing the functionality
 
 ### Step 1:  Clone or download this repository
@@ -91,7 +92,7 @@ SELECT * FROM Sales;
 REVERT; 
 ```
 
-### Step 3:  Create PowerBI Workspace and report
+### Step 3:  Create Power BI Workspace and report
 
 **Create the Power BI Workspace and Capacity**
 
