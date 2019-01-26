@@ -114,7 +114,9 @@ REVERT;
 
 ### Step 4:  Create Azure AD app registrations
 
-This example requires two app registrations in your Azure AD Tenant.  The first will be used to connect to Power BI and generated the embed token.  The second will be used for the web application, and for the token exchange that will allow Power BI to access the SQL database on behalf of the end user.
+This example requires two app registrations in your Azure AD Tenant.  
+* The first will be used to connect to the Power BI Service and generate the embed token for the report.  
+* The second will be used for the web application and the token exchange that will allow Power BI to access the SQL database on behalf of the end user.
 
 You can follow the detailed instructions for [creating](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) and [configuring](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis) an app registration, and include the specific configuration required for the two applications below.
 
