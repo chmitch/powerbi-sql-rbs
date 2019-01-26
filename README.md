@@ -38,6 +38,8 @@ In order to apply role based security in Azure SQL Database you first must have 
 3. Connect to the database with your management tool of choice (ie. Query editor or Management Studio), and be sure to login with the SQL AAD Admin.
 4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.
 
+> *Note!* If you don't already have some test users in your AD tenant, you'll first need to [create some user accounts](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory#add-a-new-user) before you can add them to your SQL database.
+
 ```
 --create the table
 CREATE TABLE Sales  
@@ -76,7 +78,7 @@ ON dbo.Sales
 WITH (STATE = ON);
 ```  
 
-You now have a database with a role based security policy, and need to assign your AAD users access to that database.  To assign a user to the database run the following command for each user.  If you don't already have some test users in your AD tenant, you'll first need to [create some user accounts](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory#add-a-new-user) before you can add them to your SQL database.
+You now have a database with a role based security policy, and need to assign your AAD users access to that database.  To assign a user to the database run the following command for each user.
 
 ```
 --note, must do this as the aad admin
