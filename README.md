@@ -34,7 +34,7 @@ In order to apply role based security in Azure SQL Database you first must have 
 
 1. Create an Azure SQL Database.  If you need instructions you can follow the step by step guide to [create a SQL database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal#create-a-sql-database).
 2. Set an Azure Active Directory Admin for the SQL Database you just created. This is required to grant AAD users access to your database.  For detailed instructions see [provisioning an Azure AD administrator for your Azure SQL Database server](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
-3. Connect to the database with your management tool of choice (ie. [Azure Query editor](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-portal) or [Management Studio](https://docs.microsoft.com/en-us/sql/ssms/scripting/query-and-text-editors-sql-server-management-studio)), and be sure to login with the SQL AAD Admin account from Step 2.<br><img src="./ReadmeFiles/PortalQueryEditorLogin.png" title="AAD Login" width="400">
+3. Connect to the database with your management tool of choice (ie. [Azure Query editor](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-portal) or [Management Studio](https://docs.microsoft.com/en-us/sql/ssms/scripting/query-and-text-editors-sql-server-management-studio)), and be sure to login with the SQL AAD Admin account from Step 2.<br><img src="./ReadmeFiles/PortalQueryEditorLogin.png" title="AAD Login" width="600">
 4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.
 
 > *Note!* If you don't already have some test users in your AD tenant, you'll first need to [create some user accounts](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory#add-a-new-user) before you can add them to your SQL database.
@@ -110,22 +110,27 @@ REVERT;
 4. Publish the report to Power BI in the workspace you just created.
 5. Back in Power BI.com, edit the settings for the published dataset.<br><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400">
 6. Navigate to "Data source credentials" and click "Edit Credentials"
-7. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<br><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="300"> 
+7. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<br><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"> 
 
 ### Step 4:  Create Azure AD app registrations
 
 This example requires two app registrations in your Azure AD Tenant.  The first will be used to connect to Power BI and generated the embed token.  The second will be used for the web application, and for the token exchange that will allow Power BI to access the SQL database on behalf of the end user.
 
-You can follow the instructions for [creating](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) and [configuring](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis) an app registration, and include the specific configuration required for the two applications below.
+You can follow the detailed instructions for [creating](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) and [configuring](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis) an app registration, and include the specific configuration required for the two applications below.
 
 **Create the app registration for report embedding**
-1. Start a new app registration<br><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration" width="400"> 
-2. Name the application, and choose "Public Client (mobile & desktop)"<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="400">
-3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<br><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="400">
-4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the Group.Read.All and Report.Read.All delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="400">
+1. Start a new app registration<br><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration"> 
+2. Name the application, and choose "Public Client (mobile & desktop)"<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI">
+3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<br><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties">
+4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions">
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
+1.  Create an new app registration, and enter `https://localhost:44302/signin-oidc` as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
+<br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
+2.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
+>*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the [troubleshooting](#Troubleshooting) section below.
+3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
 
 ### Step 5:  Configure .Net Core web application
 
@@ -143,6 +148,7 @@ On the Azure AD sign-in page, enter the name and password of one of the user acc
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+## Troubleshooting
 
 
 
