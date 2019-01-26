@@ -120,17 +120,17 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 **Create the app registration for report embedding**
 1. Start a new app registration<br><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration"> 
-2. Name the application, and choose "Public Client (mobile & desktop)"<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI">
-3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<br><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties">
-4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions">
+2. Name the application, and choose "Public Client (mobile & desktop)"<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="500">
+3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<br><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="500">
+4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions" width="500">
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
 1.  Create an new app registration, and enter `https://localhost:44302/signin-oidc` as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
-<br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
-2.  Just like the previous app registration, you'll need to add permissions.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
+<br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb" width="500">
+2.  Just like the previous app registration, you'll need to add permissions.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions" width="500">
 >*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the [troubleshooting](#Troubleshooting) section below.
-3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
+3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret" width="500">
 
 ### Step 5:  Configure .Net Core web application
 
