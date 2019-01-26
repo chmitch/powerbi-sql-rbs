@@ -34,7 +34,10 @@ In order to apply role based security in Azure SQL Database you first must have 
 
 1. Create an Azure SQL Database.  If you need instructions you can follow the step by step guide to [create a SQL database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal#create-a-sql-database).
 2. Set an Azure Active Directory Admin for the SQL Database you just created. This is required to grant AAD users access to your database.  For detailed instructions see [provisioning an Azure AD administrator for your Azure SQL Database server](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
-3. Connect to the database with your management tool of choice (ie. [Azure Query editor](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-portal) or [Management Studio](https://docs.microsoft.com/en-us/sql/ssms/scripting/query-and-text-editors-sql-server-management-studio)), and be sure to login with the SQL AAD Admin account from Step 2.<br><img src="./ReadmeFiles/PortalQueryEditorLogin.png" title="AAD Login" width="600">
+3. Connect to the database with your management tool of choice (ie. [Azure Query editor](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-portal) or [Management Studio](https://docs.microsoft.com/en-us/sql/ssms/scripting/query-and-text-editors-sql-server-management-studio)), and be sure to login with the SQL AAD Admin account from Step 2.
+
+<img src="./ReadmeFiles/PortalQueryEditorLogin.png" title="AAD Login" width="600">
+
 4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.
 
 > *Note!* If you don't already have some test users in your AD tenant, you'll first need to [create some user accounts](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory#add-a-new-user) before you can add them to your SQL database.
