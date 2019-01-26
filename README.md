@@ -116,19 +116,19 @@ REVERT;
 
 This example requires two app registrations in your Azure AD Tenant.  The first will be used to connect to Power BI and generated the embed token.  The second will be used for the web application, and for the token exchange that will allow Power BI to access the SQL database on behalf of the end user.
 
-You can follow the instructions for [creating](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) and [configuring](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis) an app registration, and include the specific configuration required for the two applications below.
+You can follow the detailed instructions for [creating](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) and [configuring](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis) an app registration, and include the specific configuration required for the two applications below.
 
 **Create the app registration for report embedding**
 1. Start a new app registration<br><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration"> 
-2. Name the application, and choose `Public Client (mobile & desktop)`<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI">
+2. Name the application, and choose "Public Client (mobile & desktop)"<br><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI">
 3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<br><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties">
-4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the Group.Read.All and Report.Read.All delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions">
+4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<br><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions">
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
-1.  Create an new app registration, and enter "https://localhost:44302/signin-oidc" as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
+1.  Create an new app registration, and enter `https://localhost:44302/signin-oidc` as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
 <br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
-2.  Add a new API permission for SQL Azure Database, and select the "user_impersonation" delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
+2.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
 >*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the [troubleshooting](#Troubleshooting) section below.
 3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
 
