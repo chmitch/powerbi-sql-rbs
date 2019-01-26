@@ -129,8 +129,9 @@ You can follow the instructions for [creating](https://docs.microsoft.com/en-us/
 1.  Create an new app registration, and enter "https://localhost:44302/signin-oidc" as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
 <br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
 2.  Add a new API permission for SQL Azure Database, and select the "user_impersonation" delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
->*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the troubleshooting section below.
+>*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the [troubleshooting](#Troubleshooting) section below.
 3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
+
 ### Step 5:  Configure .Net Core web application
 
 Add the required values to appsettings.json
