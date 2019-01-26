@@ -102,10 +102,7 @@ REVERT;
 
 1. Use the [Azure portal](https://portal.azure.com) to create a new Power BI Embedded capacity.  [Detailed instructions](https://docs.microsoft.com/en-us/power-bi/developer/azure-pbie-create-capacity#create-a-capacity) _(Note:  Make sure you create this capacity in the same region as the database you created in Step 2, and make sure the user you set as your capacity administrator is the same user you use to login to Power BI.)_
 2. Login to [Power BI](https://app.powerbi.com) as a Power BI Pro user so we can create a workspace to publish our reports.  _(Note: if you don't presently have a pro license you can sign up for a 60 day pro trial)_
-3. Once you've logged into Power BI, create a new app workspace, give the workspace a name and invite any other users that may need to publish reports.
-
-<img src="./ReadmeFiles/powerbi-appworkspace-part1.png" title="Step 3" width="400">
-
+3. Once you've logged into Power BI, create a new app workspace, give the workspace a name and invite any other users that may need to publish reports. <p><img src="./ReadmeFiles/powerbi-appworkspace-part1.png" title="Step 3" width="400"></p>
 4. Under the advanced section, select the Power BI Embedded capacity you provisioned, and click save.
 
 <img src="./ReadmeFiles/powerbi-appworkspace-part2.png" title="Step 3" width="400">
