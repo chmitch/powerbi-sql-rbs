@@ -33,7 +33,7 @@ From your shell or command line:
 
 In order to apply role based security in Azure SQL Database you first must have a database to work with.  These steps will walk you through creating a basic example of an Azure SQL database with Azure Active Directory authentication and role based security.
 
-1. Create an Azure SQL Database.  If you need instructions you can follow the step by step guide to [Create a SQL database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal#create-a-sql-database).
+1. Create an Azure SQL Database.  If you need instructions you can follow the step by step guide to [create a SQL database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal#create-a-sql-database).
 2. Set an Azure Active Directory Admin for the SQL Database you just created, this is required to grant AAD users access to your database.  For detailed instructions see [Provision an Azure AD administrator for your Azure SQL Database server](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 3. Connect to the database with your management tool of choice (ie. Query editor or Management Studio), and be sure to login with the SQL AAD Admin.
 4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.
