@@ -126,7 +126,11 @@ You can follow the instructions for [creating](https://docs.microsoft.com/en-us/
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
-
+1.  Create an new app registration, and enter "https://localhost:44302/signin-oidc" as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
+<br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
+2.  Add a new API permission for SQL Azure Database, and select the "user_impersonation" delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
+>*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the troubleshooting section below.
+3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
 ### Step 5:  Configure .Net Core web application
 
 Add the required values to appsettings.json
@@ -143,6 +147,7 @@ On the Azure AD sign-in page, enter the name and password of one of the user acc
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+## Troubleshooting
 
 
 
