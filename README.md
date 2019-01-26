@@ -128,7 +128,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 **Create the app registration to access Azure SQL on behalf of the end user**
 1.  Create an new app registration, and enter `https://localhost:44302/signin-oidc` as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.
 <br><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb">
-2.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
+2.  Just like the previous app registration, you'll need to add permissions.  Add a new API permission for SQL Azure Database, and select the `user_impersonation` delegated permission<br><img src="./ReadmeFiles/AppRegistrationWebPermissions.png" title="AppRegistrationWebPermissions">
 >*Note!* If you don't see SQL Azure Database in the list of APIs, try searching for it on the "APIs my organization uses" tab.  If you still don't see it, refer to the [troubleshooting](#Troubleshooting) section below.
 3.  Add a client secret.  Make sure to make a copy of the secret value before exiting the blade, since you will need it later.<br><img src="./ReadmeFiles/AppRegistrationWebSecret.png" title="AppRegistrationWebSecret">
 
