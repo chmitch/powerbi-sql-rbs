@@ -108,9 +108,10 @@ REVERT;
 2. Get data make sure you use "Direct Connect" and not cached mode.
 3. Create a report that includes data from the table "Sales" which uses role based security.
 4. Publish the report to Power BI in the workspace you just created.
-5. Back in Power BI.com, edit the settings for the published dataset.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400"></p>
-6. Navigate to "Data source credentials" and click "Edit Credentials"
-7. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"></p>
+5. Back in PowerBI.com, navigate to the report you just published.  From the Url in the browser address bar, note the WorkspaceId and ReportId (the GUID values following the `group` and `reports` url segments, respectively).  You will need these values later to configure embedding in the .Net web application.<p><img src="./ReadmeFiles/PBIConfigValues" title="PBIConfigValues"></p>
+6.  Next, edit the settings for the published dataset.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400"></p>
+7. Navigate to "Data source credentials" and click "Edit Credentials"
+8. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"></p>
 
 ### Step 4:  Create Azure AD app registrations
 
