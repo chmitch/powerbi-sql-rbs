@@ -162,7 +162,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Troubleshooting
 
-**Can't add an Azure AD user to the SQL database"**
+**Can't add an Azure AD user to the SQL database**
 
 If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  Open the user's Profile in your Azure Active Directory tenant, and verify the information:
     - Make sure you are using the "User name" value for internal users, or
