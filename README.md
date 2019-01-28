@@ -156,9 +156,11 @@ Clean the PowerBI-AzureSQL-AzureAD-DotNetCore solution, rebuild the solution, an
 
 On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.
 
-### Step 7 (Optional):  Deploy the sample application to Azure
+### Step 7: (Optional)  Deploy the sample application to Azure
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+To deploy this sample as an App Service in Azure, right click on the project in Visual Studio and choose `Publish`.  Choose "App Service" as the publish target, and follow the prompts in the wizard to complete the deployment.  A [step-by-step](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet#launch-the-publish-wizard) guide is available to follow.
+
+>*Note!* Once you've deployed the application, the Redirect Uri you configured for the web application (the second app registration) in [Step 3]() above, and add a new Redirect Uri to the app registration.  For example, if you deployed the application to "myapp.azurewebsites.net", add a Redirect Uri for `https://myapp.azurewebsites.net/signin-oidc`.<p><img src="./ReadmeFiles/RedirectUri.png" title="AppRegistrationWebSecret" width="500"></p>
 
 ## Troubleshooting
 
