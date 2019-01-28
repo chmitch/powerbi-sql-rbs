@@ -35,7 +35,7 @@ In order to apply role based security in Azure SQL Database you first must have 
 1. Create an Azure SQL Database.  If you need instructions you can follow the step by step guide to [create a SQL database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal#create-a-sql-database).
 2. Set an Azure Active Directory Admin for the SQL Database you just created. This is required to grant AAD users access to your database.  For detailed instructions see [provisioning an Azure AD administrator for your Azure SQL Database server](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 3. Connect to the database with your management tool of choice (ie. [Azure Query editor](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-portal) or [Management Studio](https://docs.microsoft.com/en-us/sql/ssms/scripting/query-and-text-editors-sql-server-management-studio)), and be sure to login with the SQL AAD Admin account from Step 2.<p><img src="./ReadmeFiles/PortalQueryEditorLogin.png" title="AAD Login" width="600"></p>
-4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.
+4. Now we need to populate some objects in the database and apply security settings.  Replace the <aaduser1> and <aaduser2> values in the following script with your actual AAD users, and run the script in your query tool.  User accounts should take the form of the full User Principal Name (UPN), which is normally the user's email address (for example, "jdoe@contoso.onmicrosoft.com" or "jdoe@contoso.com").  
 
 > *Note!* If you don't already have some test users in your AD tenant, you'll first need to [create some user accounts](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory#add-a-new-user) before you can add them to your SQL database.
 
@@ -91,7 +91,11 @@ In order to test that the security is configured correctly you can run the follo
 EXECUTE AS USER = '<aaduser1>';  
 SELECT * FROM Sales;   
 REVERT; 
+
+--you can also verify the external users with the following query
+SELECT * FROM sys.database_principals where [type] = 'E'
 ```
+>*Note!* If you have trouble adding users to the database in the previous step, see the [troubleshooting](#troubleshooting) section.
 
 ### Step 3:  Create Power BI Workspace and report
 
@@ -158,5 +162,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Troubleshooting
 
+**Can't add an Azure AD user to the SQL database"**
+If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  Open the user's Profile in your Azure Active Directory tenant, and verify the information:
+    - Make sure you are using the "User name" value for internal users, or
+    - You can substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This works especially well for Guest Accounts, such as invited B2B users, because the full UPN contains additional characters to identify the user's home tenant which are not visible on the user's profile page.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
+
+**"Cannot Load Model" error when viewing the report in the web application**
+If you receive the error below when viewing the report in the web application, but you can view the report normally on powerbi.com, there may be an issue with the Power BI premium capacity in your Azure subscription.  The most like cause is that the capacity is not currently running.  Visit the Azure portal to verify that it is configured properly. <p><img src="./ReadmeFiles/CannotLoadModel.png" title="CannotLoadModel"></p>
+
+## Considerations for using this sample
+
+## Additional resources
 
 
