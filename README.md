@@ -177,6 +177,13 @@ If you receive the error below when viewing the report in the web application, b
 
 ## Considerations for using this sample
 
+This sample was written to demonstrate the concepts and functionality in their simplest possible forms.  For "real world" or production scenarios, some additional things you should consider are:
+
+* Power BI embed token caching for user sessions
+* Error handling and [retry](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry) logic for downstream dependencies
+* [Throttling](https://docs.microsoft.com/en-us/azure/architecture/patterns/throttling) of requests, in-line with your SQL DTU capacity.
+* [Managing secrets](https://azure.microsoft.com/en-us/resources/samples/app-service-msi-keyvault-dotnet/), including your ClientSecret and Power BI pro user credentials.
+
 ## Additional resources
 
 
