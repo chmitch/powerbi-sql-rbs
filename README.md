@@ -137,13 +137,13 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 1. Open the PowerBI-AzureSQL-AzureAD-DotNetCore solution from the local folder you cloned in [Step 1](#step-1--clone-or-download-this-repository) above.
 2. In the PowerBI-AzureSQL-AzureAD-DotNetCore project, open the `appsettings.json` file and add the configuration values captured from the previous steps in this tutorial:
-*  `AADTenantId` should be the GUID value of your Azure AD directory
-*  `ClientId` should be the GUID Application Id of the web application (the second app registration you created)
-*  `ClientSecret` should be the value of the secret you created for the web application
-*  `PbiApplicationId` should be the GUID Application Id of the Power BI application (the first app registration you created)
-*  `WorkspaceId`
-*  `ReportId`
-*  `PbiUsername` and `PbiPassword` should be the credentials of your Power BI pro user account.
+  *  `AADTenantId` should be the GUID value of your Azure AD directory
+  *  `ClientId` should be the GUID Application Id of the web application (the second app registration you created)
+  *  `ClientSecret` should be the value of the secret you created for the web application
+  *  `PbiApplicationId` should be the GUID Application Id of the Power BI application (the first app registration you created)
+  *  `WorkspaceId`
+  *  `ReportId`
+  *  `PbiUsername` and `PbiPassword` should be the credentials of your Power BI pro user account.
 3.  Save `appsettings.json`
 
 ### Step 6:  Build and run the sample
