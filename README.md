@@ -156,19 +156,23 @@ Clean the PowerBI-AzureSQL-AzureAD-DotNetCore solution, rebuild the solution, an
 
 On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.
 
-### Step 7 (Optional):  Deploy the sample application to Azure
+### Step 7: (Optional)  Deploy the sample application to Azure
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+To deploy this sample as an App Service in Azure, right click on the project in Visual Studio and choose `Publish`.  Choose "App Service" as the publish target, and follow the prompts in the wizard to complete the deployment.  A [step-by-step](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet#launch-the-publish-wizard) guide is available to follow.
+
+>*Note!* Once you've deployed the application, the Redirect Uri you configured for the web application (the second app registration) in [Step 3]() above, and add a new Redirect Uri to the app registration.  For example, if you deployed the application to "myapp.azurewebsites.net", add a Redirect Uri for `https://myapp.azurewebsites.net/signin-oidc`.<p><img src="./ReadmeFiles/RedirectUri.png" title="AppRegistrationWebSecret" width="500"></p>
 
 ## Troubleshooting
 
-**Can't add an Azure AD user to the SQL database"**
+**Can't add an Azure AD user to the SQL database**
+
 If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  Open the user's Profile in your Azure Active Directory tenant, and verify the information:
     - Make sure you are using the "User name" value for internal users, or
     - You can substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This works especially well for Guest Accounts, such as invited B2B users, because the full UPN contains additional characters to identify the user's home tenant which are not visible on the user's profile page.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
 
 **"Cannot Load Model" error when viewing the report in the web application**
-If you receive the error below when viewing the report in the web application, but you can view the report normally on powerbi.com, there may be an issue with the Power BI premium capacity in your Azure subscription.  The most like cause is that the capacity is not currently running.  Visit the Azure portal to verify that it is configured properly. <p><img src="./ReadmeFiles/CannotLoadModel.png" title="CannotLoadModel"></p>
+
+If you receive the error below when viewing the report in the web application, but you can view the report normally on powerbi.com, there may be an issue with the Power BI premium capacity in your Azure subscription.  The most like cause is that the capacity is not currently running.  Visit the Azure portal to verify that it is configured properly. <p><img src="./ReadmeFiles/CannotLoadModel.png" title="CannotLoadModel" width="500"></p>
 
 ## Considerations for using this sample
 
