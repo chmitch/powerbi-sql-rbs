@@ -168,7 +168,7 @@ If the external user you entered fails to resolve as an AD user, or you receive 
     - You can substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This works especially well for Guest Accounts, such as invited B2B users, because the full UPN contains additional characters to identify the user's home tenant which are not visible on the user's profile page.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
 
 **"Cannot Load Model" error when viewing the report in the web application**
-If you receive the error below when viewing the report in the web application, but you can view the report normally on powerbi.com, there may be an issue with the Power BI premium capacity in your Azure subscription.  The most like cause is that the capacity is not currently running.  Visit the Azure portal to verify that it is configured properly. <p><img src="./ReadmeFiles/CannotLoadModel.png" title="CannotLoadModel"></p>
+If you receive the error below when viewing the report in the web application, but you can view the report normally on powerbi.com, there may be an issue with the Power BI premium capacity in your Azure subscription.  The most like cause is that the capacity is not currently running.  Visit the Azure portal to verify that it is configured properly. <p><img src="./ReadmeFiles/CannotLoadModel.png" title="CannotLoadModel" width="500"></p>
 
 ## Considerations for using this sample
 
