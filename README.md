@@ -123,7 +123,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 **Create the app registration for report embedding**
 1. Start a new app registration.<p><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration"></p>
 2. Name the application, and choose "Public Client (mobile & desktop)".<p><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="500"></p>
-3. Make note of the Azure AD Tenant Id and Application Id, since you will need them later.<p><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="500"></p>
+3. Make note of the Azure AD Directory Id and Application Id, since you will need them later.<p><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="500"></p>
 4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<p><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions" width="500"></p>
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
@@ -135,15 +135,22 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 ### Step 5:  Configure .Net Core web application
 
-Add the required values to appsettings.json
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. Open the PowerBI-AzureSQL-AzureAD-DotNetCore solution from the local folder you cloned in [Step 1](#Step 1:  Clone or download this repository) above.
+2. In the PowerBI-AzureSQL-AzureAD-DotNetCore project, open the `appsettings.json` file and add the configuration values captured from the previous steps in this tutorial:
+*  `AADTenantId` should be the GUID value of your Azure AD directory
+*  `ClientId` should be the GUID Application Id of the web application (the second app registration you created)
+*  `ClientSecret` should be the value of the secret you created for the web application
+*  `PbiApplicationId` should be the GUID Application Id of the Power BI application (the first app registration you created)
+*  `WorkspaceId`
+*  `ReportId`
+*  `PbiUsername` and `PbiPassword` should be the credentials of your Power BI pro user account.
+3.  Save `appsettings.json`
 
 ### Step 6:  Build and run the sample
 
 Clean the solution, rebuild the solution, and run it.
 
-On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in Step 2 above.
+On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#Step 2:  Create and configure SQL database) above.
 
 ### Step 7 (Optional):  Deploy the sample application to Azure
 
