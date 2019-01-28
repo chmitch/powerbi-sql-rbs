@@ -168,8 +168,8 @@ To deploy this sample as an App Service in Azure, right click on the project in 
 
 If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  
 
-    - The UPN is normally a user's email address, however for some types of users (including Guest Accounts, such as invited B2B users) this isn't the case.  You can easily look up a user's UPN by using [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  Execute the `az ad user list` bash command and locate the 'userPrincipalName' value for the user.
-    - An alternative is to substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This can be found on the user's profile page in Azure Active Directory.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
+* The UPN is normally a user's email address, however for some types of users (including Guest Accounts, such as invited B2B users) this isn't the case.  You can easily look up a user's UPN by using [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  Execute the `az ad user list` bash command and locate the 'userPrincipalName' value for the user.
+* An alternative is to substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This can be found on the user's profile page in Azure Active Directory.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
 
 **"Cannot Load Model" error when viewing the report in the web application**
 
