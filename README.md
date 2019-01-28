@@ -135,7 +135,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 ### Step 5:  Configure .Net Core web application
 
-1. Open the PowerBI-AzureSQL-AzureAD-DotNetCore solution from the local folder you cloned in [Step 1](#Step 1:  Clone or download this repository) above.
+1. Open the PowerBI-AzureSQL-AzureAD-DotNetCore solution from the local folder you cloned in [Step 1](#step-1--clone-or-download-this-repository) above.
 2. In the PowerBI-AzureSQL-AzureAD-DotNetCore project, open the `appsettings.json` file and add the configuration values captured from the previous steps in this tutorial:
 *  `AADTenantId` should be the GUID value of your Azure AD directory
 *  `ClientId` should be the GUID Application Id of the web application (the second app registration you created)
@@ -150,7 +150,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 Clean the solution, rebuild the solution, and run it.
 
-On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#Step 2:  Create and configure SQL database) above.
+On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.
 
 ### Step 7 (Optional):  Deploy the sample application to Azure
 
