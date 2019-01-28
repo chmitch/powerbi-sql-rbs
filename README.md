@@ -160,7 +160,7 @@ On the Azure AD sign-in page, enter the name and password of one of the user acc
 
 To deploy this sample as an App Service in Azure, right click on the project in Visual Studio and choose `Publish`.  Choose "App Service" as the publish target, and follow the prompts in the wizard to complete the deployment.  A [step-by-step](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet#launch-the-publish-wizard) guide is available to follow.
 
->*Note!* Once you've deployed the application, the Redirect Uri you configured for the web application (the second app registration) in [Step 4](#step-4--create-azure-ad-app-registrations) above, and add a new Redirect Uri to the app registration.  For example, if you deployed the application to "myapp.azurewebsites.net", add a Redirect Uri for `https://myapp.azurewebsites.net/signin-oidc`.<p><img src="./ReadmeFiles/RedirectUri.png" title="AppRegistrationWebSecret" width="600"></p>
+>*Note!* Once you've deployed the application, the "localhost" Redirect Uri won't work for the published instance, so you'll need to add a new Redirect Uri to the app registration you configured for the web application (the second app registration) in [Step 4](#step-4--create-azure-ad-app-registrations) above.  For example, if you deployed the application to "myapp.azurewebsites.net", add a Redirect Uri for `https://myapp.azurewebsites.net/signin-oidc`.<p><img src="./ReadmeFiles/RedirectUri.png" title="AppRegistrationWebSecret" width="600"></p>
 
 ## Troubleshooting
 
