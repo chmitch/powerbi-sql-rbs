@@ -148,7 +148,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 ### Step 6:  Build and run the sample
 
-Clean the solution, rebuild the solution, and run it.
+Clean the PowerBI-AzureSQL-AzureAD-DotNetCore solution, rebuild the solution, and run it.
 
 On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.
 
