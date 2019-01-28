@@ -142,8 +142,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
     -  `ClientId` should be the GUID Application Id of the web application (the second app registration you created)
     -  `ClientSecret` should be the value of the secret you created for the web application
     -  `PbiApplicationId` should be the GUID Application Id of the Power BI application (the first app registration you created)
-    -  `WorkspaceId`
-    -  `ReportId`
+    -  `WorkspaceId` and `ReportId` should be the GUID values you captured after you published the Power BI report.
     -  `PbiUsername` and `PbiPassword` should be the credentials of your Power BI pro user account.
 3.  Save `appsettings.json`
 
