@@ -137,7 +137,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 1. Start a new app registration.<p><img src="./ReadmeFiles/AppRegistration.png" title="AppRegistration"></p>
 2. Name the application, and choose "Public Client (mobile & desktop)".<p><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="500"></p>
 3. Make note of the Azure AD Directory Id and Application Id, since you will need them later.<p><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="500"></p>
-4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `Group.Read.All` and `Report.Read.All` delegated permissions.<p><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions" width="500"></p>
+4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `App.Read.All`, `Dataset.Read.All`, `Group.Read.All`, and `Report.Read.All` delegated permissions.<p><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions" width="400"></p>
 >*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
