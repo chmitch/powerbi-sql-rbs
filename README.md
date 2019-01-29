@@ -1,4 +1,4 @@
-# Integrate Azure SQL row level security with Power BI Embedded in .Net Core
+﻿# Integrate Azure SQL row level security with Power BI Embedded in .Net Core
 
 ## About this sample
 
@@ -106,16 +106,24 @@ SELECT * FROM sys.database_principals where [type] = 'E'
 3. Once you've logged into Power BI, create a new app workspace, give the workspace a name and invite any other users that may need to publish reports. <p><img src="./ReadmeFiles/powerbi-appworkspace-part1.png" title="Step 3" width="400"></p>
 4. Under the advanced section, select the Power BI Embedded capacity you provisioned, and click save.<p><img src="./ReadmeFiles/powerbi-appworkspace-part2.png" title="Step 3" width="400"></p>
 
-**Create and Publish the Power BI Model**
+**Create the Power BI Model**
 
-1. Open Power BI Desktop
-2. Get data make sure you use "Direct Connect" and not cached mode.
-3. Create a report that includes data from the table "Sales" which uses role based security.
-4. Publish the report to Power BI in the workspace you just created.
-5. Back in PowerBI.com, navigate to the report you just published.  From the Url in the browser address bar, note the WorkspaceId and ReportId (the GUID values following the `groups` and `reports` url segments, respectively).  You will need these values later to configure embedding in the .Net web application.<p><img src="./ReadmeFiles/PBIConfigValues.png" title="PBIConfigValues"></p>
-6.  Next, edit the settings for the published dataset.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400"></p>
-7. Navigate to "Data source credentials" and click "Edit Credentials"
-8. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"></p>
+1. Open Power BI.
+2. Start building your model by using the "Get Data" option.
+3. Select Azure SQL Database as your source.
+4. Provide the connection information for the database you created in Step 2 (be sure to use "Direct Query"  Troubleshooting note: if you get a filrewall warning...
+5. Select the table "Sales" that we defined in Step 2, and click "Load"
+6. Get data make sure you use "Direct Connect" and not cached mode.
+7. Create a report that includes data from the table "Sales" which uses role based security.
+
+**Publish the Power BI Model**
+
+1. Save your changes in Power BI Desktop to name the model file.
+2. Click the "Publish" button to send the model to PowerBI.com.
+3. Back in PowerBI.com, navigate to the report you just published.  From the Url in the browser address bar, note the WorkspaceId and ReportId (the GUID values following the `groups` and `reports` url segments, respectively).  You will need these values later to configure embedding in the .Net web application.<p><img src="./ReadmeFiles/PBIConfigValues.png" title="PBIConfigValues"></p>
+4.  Next, edit the settings for the published dataset.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part1.png" title="Step 3" width="400"></p>
+5. Navigate to "Data source credentials" and click "Edit Credentials"
+6. Configure the connection to the database using a user with administrative rights (the AAD admin or the SQL admin), and be sure to check the box allowing AAD user credentials to be used for DirectQuery.<p><img src="./ReadmeFiles/powerbi-dataset-settings-part2.png" title="Step 3" width="400"></p>
 
 ### Step 4:  Create Azure AD app registrations
 
@@ -154,7 +162,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 
 Clean the PowerBI-AzureSQL-AzureAD-DotNetCore solution, rebuild the solution, and run it.
 
-On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.
+On the Azure AD sign-in page, enter the name and password of one of the user accounts you configured in the SQL database in [Step 2](#step-2--create-and-configure-sql-database) above.  View the report you embedded to see that the current user only sees the data permitted by the SQL filter function.  Click the `Switch User` link at the top of the page to log in with another user account and compare the results.
 
 ### Step 7: (Optional) Deploy the sample application to Azure
 
@@ -166,9 +174,10 @@ To deploy this sample as an App Service in Azure, right click on the project in 
 
 **Can't add an Azure AD user to the SQL database**
 
-If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  Open the user's Profile in your Azure Active Directory tenant, and verify the information:
-    - Make sure you are using the "User name" value for internal users, or
-    - You can substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This works especially well for Guest Accounts, such as invited B2B users, because the full UPN contains additional characters to identify the user's home tenant which are not visible on the user's profile page.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
+If the external user you entered fails to resolve as an AD user, or you receive and error such as `Error: Principal 'someuser' could not be found or this principal type is not supported.` you may not have the correct UPN.  
+
+* The UPN is normally a user's email address, however for some types of users (including Guest Accounts, such as invited B2B users) this isn't the case.  You can easily look up a user's UPN by using [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).  Execute the `az ad user list` bash command and locate the 'userPrincipalName' value for the user.
+* An alternative is to substitute the user's Object Id for the Username in the `CREATE USER` SQL command.  This can be found on the user's profile page in Azure Active Directory.<p><img src="./ReadmeFiles/AADUser.png" title="AADUser"></p>
 
 **"Cannot Load Model" error when viewing the report in the web application**
 
@@ -176,6 +185,14 @@ If you receive the error below when viewing the report in the web application, b
 
 ## Considerations for using this sample
 
+This sample was written to demonstrate the concepts and functionality in their simplest possible forms.  For "real world" or production scenarios, some additional things you should consider are:
+
+* Power BI embed token caching for user sessions
+* Error handling and [retry](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry) logic for downstream dependencies
+* [Throttling](https://docs.microsoft.com/en-us/azure/architecture/patterns/throttling) of requests, in-line with your SQL DTU capacity.
+* [Managing secrets](https://azure.microsoft.com/en-us/resources/samples/app-service-msi-keyvault-dotnet/), including your ClientSecret and Power BI pro user credentials.
+
 ## Additional resources
+
 
 
