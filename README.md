@@ -16,11 +16,10 @@ Run the application, and sign in with Azure AD credentials to view the report. C
 
 To run this sample, you'll need:
 
-- [Visual Studio 2017](https://aka.ms/vsdownload)
+- [Visual Studio 2017](https://aka.ms/vsdownload) version 15.7 or later for .NET Core 2.1
 - An Internet connection
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Power BI Pro or [trial](https://powerbi.microsoft.com/en-us/get-started/) license
-- At least two user accounts in your Azure AD tenant for testing the functionality
 
 ### Step 1:  Clone or download this repository
 
@@ -138,7 +137,7 @@ You can follow the detailed instructions for [creating](https://docs.microsoft.c
 2. Name the application, and choose "Public Client (mobile & desktop)".<p><img src="./ReadmeFiles/AppRegistrationPBI.png" title="AppRegistrationPBI" width="500"></p>
 3. Make note of the Azure AD Directory Id and Application Id, since you will need them later.<p><img src="./ReadmeFiles/AppRegistrationProperties.png" title="AppRegistrationProperties" width="500"></p>
 4. Add permissions for the Power BI service by clicking "Add Permission", selecting the Power BI Service, and then add the `App.Read.All`, `Dataset.Read.All`, `Group.Read.All`, and `Report.Read.All` delegated permissions.<p><img src="./ReadmeFiles/AppRegistrationPBIPermissions.png" title="AppRegistrationPBIPermissions" width="400"></p>
->*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have an Azure AD Global Admin consent to the permissions for you.
+>*Note!* Be sure to always click the "Grant Permissions for {tenant name}" button at the bottom of the permissions blade any time you add permissions to an application.  If the button is disabled, you must have someone who is an Azure AD Global Admin in your tenant consent to the permissions for you.
 
 **Create the app registration to access Azure SQL on behalf of the end user**
 1.  Create an new app registration, and enter `https://localhost:44302/signin-oidc` as the Redirect Uri.  As before, make note of the Application Id, since you will need it later.<p><img src="./ReadmeFiles/AppRegistrationWeb.png" title="AppRegistrationWeb" width="500"></p>
