@@ -16,7 +16,7 @@ Run the application, and sign in with Azure AD credentials to view the report. C
 
 To run this sample, you'll need:
 
-- [Visual Studio 2017](https://aka.ms/vsdownload) version 15.7 or later for .NET Core 2.1
+- [Visual Studio 2017](https://aka.ms/vsdownload) version 15.7 or later for .NET Core 2.1, Visual Studio for Mac, or Visual Studio Code
 - An Internet connection
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Power BI Pro or [trial](https://powerbi.microsoft.com/en-us/get-started/) license
